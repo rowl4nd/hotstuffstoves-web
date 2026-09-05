@@ -1,0 +1,130 @@
+/* Signature hero animation: drifting embers, rising smoke wisps, and a
+   flickering flame glow. Pure CSS keyframes using only transform + opacity
+   (GPU-friendly, no layout thrash). prefers-reduced-motion is handled
+   globally in globals.css (all animations collapse to a single frame), so
+   nothing further is needed here for that. */
+
+.heroStage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flameGlow {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  width: 60vw;
+  max-width: 620px;
+  height: 60vw;
+  max-height: 620px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(218, 86, 56, 0.55) 0%,
+    rgba(196, 67, 43, 0.32) 35%,
+    rgba(216, 155, 60, 0.12) 60%,
+    rgba(23, 19, 15, 0) 80%
+  );
+  filter: blur(2px);
+  animation: flameFlicker 4.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes flameFlicker {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.85;
+  }
+  20% {
+    transform: translateX(-52%) scale(1.04);
+    opacity: 0.95;
+  }
+  38% {
+    transform: translateX(-48%) scale(0.97);
+    opacity: 0.75;
+  }
+  55% {
+    transform: translateX(-51%) scale(1.05);
+    opacity: 1;
+  }
+  72% {
+    transform: translateX(-49%) scale(0.99);
+    opacity: 0.8;
+  }
+  88% {
+    transform: translateX(-50%) scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+.ember {
+  position: absolute;
+  bottom: -2%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--flame-gold) 0%, var(--ember-red) 70%, transparent 100%);
+  opacity: 0;
+  animation-name: emberDrift;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes emberDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.6);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(var(--drift-x, 20px), -55vh, 0) scale(1);
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate3d(var(--drift-x2, -10px), -95vh, 0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.smoke {
+  position: absolute;
+  bottom: 4%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(237, 230, 218, 0.16),
+    rgba(237, 230, 218, 0) 70%
+  );
+  filter: blur(6px);
+  opacity: 0;
+  animation-name: smokeRise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.7);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate3d(var(--drift-x, 30px), -50vh, 0) scale(1.4);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate3d(var(--drift-x2, 60px), -85vh, 0) scale(2);
+    opacity: 0;
+  }
+}

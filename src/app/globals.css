@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --charcoal-ink: #17130f;
+  --charcoal-ink-2: #1f1a14;
+  --ember-red: #c4432b;
+  --ember-red-bright: #da5638;
+  --flame-gold: #d89b3c;
+  --ash-cream: #ede6da;
+  --smoke-grey: #43392f;
+  --oak-brown: #6b4a32;
+
+  --hairline: rgba(237, 230, 218, 0.14);
+  --hairline-strong: rgba(237, 230, 218, 0.24);
+}
+
+@theme inline {
+  --color-charcoal-ink: var(--charcoal-ink);
+  --color-charcoal-ink-2: var(--charcoal-ink-2);
+  --color-ember-red: var(--ember-red);
+  --color-ember-red-bright: var(--ember-red-bright);
+  --color-flame-gold: var(--flame-gold);
+  --color-ash-cream: var(--ash-cream);
+  --color-smoke-grey: var(--smoke-grey);
+  --color-oak-brown: var(--oak-brown);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-plex-sans);
+}
+
+@media (prefers-color-scheme: light) {
+  /* Site is intentionally dark-themed only; no light variant. */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--charcoal-ink);
+  color: var(--ash-cream);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--ember-red);
+  color: var(--ash-cream);
+}
+
+/* Visible keyboard focus states everywhere, without adding a ring to
+   pointer-driven focus. */
+:focus-visible {
+  outline: 2px solid var(--flame-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.hairline-divider {
+  border-top: 1px solid var(--hairline);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
