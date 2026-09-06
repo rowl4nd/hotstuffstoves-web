@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Section, SectionHeading } from "@/components/Section";
 import { ContactForm } from "@/components/ContactForm";
 import { siteInfo } from "@/lib/content/site";
@@ -20,9 +19,7 @@ export default function ContactPage() {
 
       <div className="mt-14 grid gap-14 md:grid-cols-[1fr_1fr]">
         <div>
-          <Suspense fallback={<ContactFormFallback />}>
-            <ContactForm />
-          </Suspense>
+          <ContactForm />
         </div>
 
         <div>
@@ -63,15 +60,5 @@ export default function ContactPage() {
         </div>
       </div>
     </Section>
-  );
-}
-
-function ContactFormFallback() {
-  return (
-    <div className="animate-pulse space-y-6" aria-hidden="true">
-      <div className="h-12 border border-hairline bg-charcoal-ink-2" />
-      <div className="h-12 border border-hairline bg-charcoal-ink-2" />
-      <div className="h-32 border border-hairline bg-charcoal-ink-2" />
-    </div>
   );
 }

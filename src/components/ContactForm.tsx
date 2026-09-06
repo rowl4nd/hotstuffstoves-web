@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { useSearchParams } from "next/navigation";
-import { stoves } from "@/lib/content/stoves";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export function ContactForm() {
-  const searchParams = useSearchParams();
-  const preselectedStove = searchParams.get("stove") ?? "";
+const ENQUIRY_TYPES = [
+  "Stove installation",
+  "Chimney service",
+  "General enquiry",
+];
 
+export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -26,7 +27,7 @@ export function ContactForm() {
       email: String(formData.get("email") || ""),
       phone: String(formData.get("phone") || ""),
       message: String(formData.get("message") || ""),
-      stove: String(formData.get("stove") || ""),
+      enquiryType: String(formData.get("enquiryType") || ""),
       company: String(formData.get("company") || ""), // honeypot
     };
 
@@ -114,17 +115,12 @@ export function ContactForm() {
           />
         </Field>
 
-        <Field label="Which stove? (optional)" htmlFor="stove">
-          <select
-            id="stove"
-            name="stove"
-            defaultValue={preselectedStove}
-            className={inputClass}
-          >
+        <Field label="What's it about? (optional)" htmlFor="enquiryType">
+          <select id="enquiryType" name="enquiryType" className={inputClass}>
             <option value="">Not sure / general enquiry</option>
-            {stoves.map((s) => (
-              <option key={s.slug} value={s.name}>
-                {s.name}
+            {ENQUIRY_TYPES.map((type) => (
+              <option key={type} value={type}>
+                {type}
               </option>
             ))}
           </select>

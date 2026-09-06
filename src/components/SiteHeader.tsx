@@ -4,6 +4,8 @@ import { Logo } from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/stoves", label: "Stoves" },
+  { href: "/installations", label: "Installations" },
+  { href: "/showroom", label: "Showroom" },
   { href: "/chimney-services", label: "Chimney Services" },
   { href: "/contact", label: "Contact" },
 ];
@@ -14,7 +16,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Logo />
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex xl:gap-7">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -40,7 +42,7 @@ export function SiteHeader() {
 
 function MobileNav() {
   return (
-    <details className="relative md:hidden">
+    <details className="relative lg:hidden">
       <summary
         className="list-none cursor-pointer select-none border border-hairline px-3 py-2 text-sm text-ash-cream"
         aria-label="Open menu"

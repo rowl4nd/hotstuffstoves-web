@@ -7,22 +7,17 @@
  * replacing the content-fetching functions, not rebuilding the pages.
  */
 
-export interface StoveSpecTag {
-  label: string;
-}
-
-export interface Stove {
-  slug: string;
-  name: string;
-  range: "Esse";
-  description: string;
-  specs: StoveSpecTag[];
-  finishes?: string[];
-  image: {
-    src: string;
-    alt: string;
-  };
-  featured?: boolean;
+export interface GalleryImage {
+  id: string;
+  src: string;
+  alt: string;
+  caption?: string;
+  /**
+   * Placeholder photos must be flagged so it's obvious, at the data layer,
+   * that they need to be swapped for real photography before this ships to
+   * production. See README.md.
+   */
+  isPlaceholder: boolean;
 }
 
 export interface Testimonial {
@@ -42,6 +37,12 @@ export interface Testimonial {
 export interface ChimneyService {
   slug: string;
   name: string;
+  description: string;
+}
+
+export interface Brochure {
+  id: string;
+  title: string;
   description: string;
 }
 

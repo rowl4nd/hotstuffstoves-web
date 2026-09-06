@@ -8,7 +8,7 @@ interface ContactPayload {
   email: string;
   phone?: string;
   message: string;
-  stove?: string;
+  enquiryType?: string;
   /** Honeypot field — real users never fill this in. */
   company?: string;
 }
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const { name, email, phone, message, stove, company } = body;
+  const { name, email, phone, message, enquiryType, company } = body;
 
   // Honeypot: silently succeed without sending anything.
   if (company) {
@@ -61,15 +61,15 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
 
-  const subject = stove
-    ? `New enquiry (${stove}) from ${name}`
+  const subject = enquiryType
+    ? `New enquiry (${enquiryType}) from ${name}`
     : `New enquiry from ${name}`;
 
   const textLines = [
     `Name: ${name}`,
     `Email: ${email}`,
     phone ? `Phone: ${phone}` : null,
-    stove ? `Stove: ${stove}` : null,
+    enquiryType ? `Enquiry type: ${enquiryType}` : null,
     "",
     "Message:",
     message,

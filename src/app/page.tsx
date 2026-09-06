@@ -2,17 +2,17 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { TrustStrip } from "@/components/TrustStrip";
 import { Section, SectionHeading } from "@/components/Section";
-import { StoveListing } from "@/components/StoveListing";
+import { PhotoGrid } from "@/components/PhotoGrid";
+import { GalleryTeaser } from "@/components/GalleryTeaser";
 import { BrochureTeaser } from "@/components/BrochureTeaser";
 import { Reviews } from "@/components/Reviews";
 import { ChimneyServicesList } from "@/components/ChimneyServicesList";
-import { getFeaturedStoves } from "@/lib/content/stoves";
+import { rangePhotos, installationPhotos, showroomPhotos } from "@/lib/content/gallery";
+import { brochures } from "@/lib/content/brochures";
 import { chimneyServices, chimneyServicesIntro } from "@/lib/content/chimney-services";
 import { siteInfo } from "@/lib/content/site";
 
 export default function HomePage() {
-  const featured = getFeaturedStoves();
-
   return (
     <>
       <Hero />
@@ -21,36 +21,65 @@ export default function HomePage() {
       <Section>
         <SectionHeading
           title="The Esse range"
-          lede="Hand-built stoves, fitted properly. Four models to start a conversation about the right fire for your room."
+          lede="Hand-built stoves, fitted properly by a HETAS and Gas Safe registered installer."
         />
         <div className="mt-14">
-          <StoveListing stoves={featured} />
+          <PhotoGrid photos={rangePhotos.slice(0, 3)} />
         </div>
         <div className="mt-4">
           <Link
             href="/stoves"
             className="text-sm font-medium text-flame-gold hover:text-flame-gold/80"
           >
-            View the full range &rarr;
+            View the full range and brochure &rarr;
           </Link>
         </div>
       </Section>
 
       <Section tone="ink-2">
-        <SectionHeading title="Our brochure" />
-        <div className="mt-12">
-          <BrochureTeaser />
+        <SectionHeading
+          title="See it for yourself"
+          lede="Recent jobs, and the showroom where you can see the range fitted and running before you commit to anything."
+        />
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          <GalleryTeaser
+            photo={installationPhotos[0]}
+            title="Our installations"
+            description="A look at stoves and chimney work fitted across Wirral and beyond."
+            href="/installations"
+            linkLabel="See more installations"
+          />
+          <GalleryTeaser
+            photo={showroomPhotos[0]}
+            title="Our showroom"
+            description="Visit us at 92 Market St, Hoylake, to see the range in person."
+            href="/showroom"
+            linkLabel="See the showroom"
+          />
         </div>
       </Section>
 
       <Section>
+        <SectionHeading title="Brochures" />
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          {brochures.map((brochure) => (
+            <BrochureTeaser
+              key={brochure.id}
+              title={brochure.title}
+              description={brochure.description}
+            />
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="ink-2">
         <SectionHeading title="What people say" />
         <div className="mt-12">
           <Reviews />
         </div>
       </Section>
 
-      <Section tone="ink-2">
+      <Section>
         <SectionHeading title="Chimney services" lede={chimneyServicesIntro} />
         <div className="mt-12">
           <ChimneyServicesList services={chimneyServices.slice(0, 5)} />
@@ -65,7 +94,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section divider={false}>
+      <Section tone="ink-2" divider={false}>
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="font-display text-3xl text-ash-cream sm:text-4xl">
