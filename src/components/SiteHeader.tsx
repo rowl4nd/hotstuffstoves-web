@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { siteInfo } from "@/lib/content/site";
+import { Logo } from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/stoves", label: "Stoves" },
+  { href: "/installations", label: "Installations" },
+  { href: "/showroom", label: "Showroom" },
   { href: "/chimney-services", label: "Chimney Services" },
   { href: "/contact", label: "Contact" },
 ];
@@ -11,14 +14,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-charcoal-ink/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link
-          href="/"
-          className="font-display text-xl font-semibold tracking-tight text-ash-cream sm:text-2xl"
-        >
-          Hot Stuff Stoves
-        </Link>
+        <Logo />
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex xl:gap-7">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -44,7 +42,7 @@ export function SiteHeader() {
 
 function MobileNav() {
   return (
-    <details className="relative md:hidden">
+    <details className="relative lg:hidden">
       <summary
         className="list-none cursor-pointer select-none border border-hairline px-3 py-2 text-sm text-ash-cream"
         aria-label="Open menu"

@@ -34,7 +34,7 @@ export function SectionHeading({
 }) {
   return (
     <div className="max-w-2xl">
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-ash-cream sm:text-4xl">
+      <h2 className="font-display text-3xl text-ash-cream sm:text-4xl">
         {title}
       </h2>
       {lede ? (

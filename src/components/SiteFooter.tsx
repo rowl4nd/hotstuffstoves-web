@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteInfo } from "@/lib/content/site";
+import { StoveMark } from "@/components/Logo";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -8,9 +9,12 @@ export function SiteFooter() {
     <footer className="border-t border-hairline bg-charcoal-ink-2">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
         <div>
-          <p className="font-display text-lg font-semibold text-ash-cream">
-            {siteInfo.businessName}
-          </p>
+          <div className="flex items-center gap-3">
+            <StoveMark className="h-8 w-8 shrink-0 text-ash-cream" />
+            <p className="font-display text-lg text-ash-cream">
+              {siteInfo.businessName}
+            </p>
+          </div>
           <p className="mt-3 text-sm leading-relaxed text-ash-cream/70">
             HETAS and Gas Safe registered stove installers based in Hoylake,
             Wirral.

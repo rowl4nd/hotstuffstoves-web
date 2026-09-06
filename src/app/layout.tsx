@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import { Limelight, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
-const fraunces = Fraunces({
+// Art Deco / vintage-marquee display face — used for the logo wordmark and
+// every major heading, matching the look of the client's existing site.
+const limelight = Limelight({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  variable: "--font-limelight",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -43,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${fraunces.variable} ${plexSans.variable}`}>
+    <html lang="en-GB" className={`${limelight.variable} ${plexSans.variable}`}>
       <body className="bg-charcoal-ink text-ash-cream antialiased">
         <a
           href="#main-content"

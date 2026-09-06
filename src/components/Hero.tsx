@@ -71,7 +71,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-5 py-28 sm:px-8 sm:py-36">
         <div className="max-w-2xl">
-          <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ash-cream sm:text-5xl md:text-6xl">
+          <h1 className="font-display text-4xl leading-[1.15] text-ash-cream sm:text-5xl md:text-6xl">
             Twenty years of fires done properly.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ash-cream/80">
