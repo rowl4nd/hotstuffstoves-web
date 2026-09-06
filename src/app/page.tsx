@@ -68,7 +68,7 @@ export default function HomePage() {
       <Section divider={false}>
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight text-ash-cream sm:text-4xl">
+            <h2 className="font-display text-3xl text-ash-cream sm:text-4xl">
               Talk to us about your room
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ash-cream/75">

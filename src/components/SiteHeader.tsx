@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteInfo } from "@/lib/content/site";
+import { Logo } from "@/components/Logo";
 
 const NAV_LINKS = [
   { href: "/stoves", label: "Stoves" },
@@ -11,12 +12,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-charcoal-ink/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link
-          href="/"
-          className="font-display text-xl font-semibold tracking-tight text-ash-cream sm:text-2xl"
-        >
-          Hot Stuff Stoves
-        </Link>
+        <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (

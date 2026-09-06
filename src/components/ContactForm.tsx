@@ -56,7 +56,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="border border-hairline p-8">
-        <p className="font-display text-xl font-semibold text-ash-cream">
+        <p className="font-display text-xl text-ash-cream">
           Thanks — your message is on its way.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-ash-cream/75">

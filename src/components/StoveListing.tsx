@@ -32,7 +32,7 @@ function StoveRow({ stove, reversed }: { stove: Stove; reversed: boolean }) {
       </div>
 
       <div className={reversed ? "md:order-1" : ""}>
-        <h3 className="font-display text-2xl font-semibold tracking-tight text-ash-cream sm:text-3xl">
+        <h3 className="font-display text-2xl text-ash-cream sm:text-3xl">
           {stove.name}
         </h3>
         <p className="mt-4 text-base leading-relaxed text-ash-cream/75">

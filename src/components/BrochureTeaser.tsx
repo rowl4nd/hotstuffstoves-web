@@ -14,14 +14,14 @@ export function BrochureTeaser() {
         <div className="absolute inset-0 translate-x-2 translate-y-2 border border-oak-brown bg-charcoal-ink-2" />
         <div className="absolute inset-0 translate-x-1 translate-y-1 border border-oak-brown bg-charcoal-ink-2" />
         <div className="absolute inset-0 flex items-center justify-center border border-hairline-strong bg-smoke-grey">
-          <span className="font-display text-2xl font-semibold text-flame-gold">
+          <span className="font-display text-2xl text-flame-gold">
             HSS
           </span>
         </div>
       </div>
 
       <div>
-        <h3 className="font-display text-2xl font-semibold text-ash-cream">
+        <h3 className="font-display text-2xl text-ash-cream">
           Our brochure
         </h3>
         <p className="mt-2 max-w-md text-sm leading-relaxed text-ash-cream/70">
